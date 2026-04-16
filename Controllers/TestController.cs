@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebApiStudent.Models;
 using WebApiStudent.Models.Dis;
+using WebApiStudent.Models.Dtos.Students;
 using WebApiStudent.Models.Repostories.Students;
 
 namespace WebApiStudent.Controllers
@@ -18,6 +19,12 @@ namespace WebApiStudent.Controllers
         {
             _studentRepository = studentRepository;
 
+        }
+
+        [HttpPost]
+        public void Post(CreateUpdateStudentDto input)
+        {
+            _studentRepository.Add(input);
         }
 
         [HttpGet]

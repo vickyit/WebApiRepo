@@ -1,6 +1,7 @@
 ﻿
 using WebApiStudent.Controllers;
 using WebApiStudent.Data;
+using WebApiStudent.Models.Dtos.Students;
 
 namespace WebApiStudent.Models.Repostories.Students
 {
@@ -12,11 +13,17 @@ namespace WebApiStudent.Models.Repostories.Students
         {
             _studentContext = studentContext;
 
-        }
-        public List<Student> GetAll()
+        } 
+
+        public void  Add(CreateUpdateStudentDto input)
         {
-             
-            return _studentContext.Students.ToList();
+            Student student = new Student();
+            student.Name = input.Name;
+
+
+            _studentContext.Students.Add(student);
+            _studentContext.SaveChanges();
+
         }
     }
 }
